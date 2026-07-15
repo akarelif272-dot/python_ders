@@ -1,0 +1,123 @@
+# Class
+
+class stack:
+    def __init__(self):
+        #boş stack oluşturur
+        self.elemanlar =[]
+
+    def push(self, eleman):
+        #stack2e eleman ekler
+        self.elemanlar.append(eleman) 
+    def pop(self):
+        # tepedeki elemanı getirir
+        self.elemanlar.pop()
+
+  
+    def peek(self):
+        if self.bosmu():
+            raise IndexError("yığın boş!")
+        
+        self.elemanlar[-1]
+
+    def bosmu(self):
+        return len(self.elemanlar) == 0
+    
+
+    def elemansayisi(self):
+        return len(self.elemanlar)
+    
+    def __str__(self):
+        return f"Yığın({self.elemanlar})"
+    
+    def yaz(self):
+        print(self)
+
+y = stack()
+
+print(y.elemansayisi())
+
+y.push(4)
+
+y.yaz()
+
+
+
+# dönüşümler
+setc = {0, 1, 2}
+liste = list({1, 2, 3}) # set > list
+print(liste)
+
+tpl = tuple(setc)
+print(tpl)
+
+list2 = [("ad", "özkan"), ("il", 7)]
+sozluk = dict(list2)
+
+print(sozluk)
+
+kareler = [x**2 for x in range(2, 10)]
+print(kareler)
+
+ciftSozluk = {x: x*2 for x in range(1, 6)}
+print(ciftSozluk)
+
+otoliste = [x % 10 for x in kareler]
+print(otoliste)
+
+setc = {x % 3 for x in range(10)}
+print(setc)
+
+def bubbleSort(liste):
+    n = len(liste) 
+    for i in range(n-1):
+        for j in range(n - i - 1):
+            if liste[j] > liste[j + 1]:
+               liste[j], liste[j + 1] = liste[j + 1], liste[j]
+       
+    return liste
+testliste = [1, 9, 6, 3, 0, 8]
+sonuc = bubbleSort(testliste)
+
+print(sonuc)
+
+print(sorted(testliste))
+
+testliste.sort()
+print("2. sıralama: ", testliste)
+testliste.sort(reverse=True)
+print(testliste)
+
+kisiler = [
+    {"isim":"a", "sayi": 3},
+    {"isim": "c", "sayi": 1},
+    {"isim": "z", "sayi": 29}
+]
+siralanmis = sorted(kisiler, key=lambda x: x["sayi"], reverse=True)
+print(siralanmis)
+# kütüphane örneği
+
+kutuphane = []
+kitap1 = {
+    "ad": "İnsan Neyle Yaşar",
+    "yayımtarihi": 1885,
+    "yazar": "tolstoy"
+}
+kutuphane.append(kitap1)
+print("kütüphane örneği")
+print(kutuphane)
+
+def kitapekle(kitapadi, yayımtarihi, yazar):
+    kutuphane.append({"ad": kitapadi, "yayımtarihi": yayımtarihi, "yazar": yazar })
+
+kitapekle("sağlık ekonomisi", 2019, "yusuf çelik")
+print(kutuphane)
+
+kitaplar = [kitap["ad"] for kitap in kutuphane]
+print(" , ".join(kitaplar))
+
+aranankitap = "nutuk"
+for kitap in kutuphane:
+    if kitap ["ad"] == aranankitap:
+        print("kitapbulundu: ", kitap["ad"])
+    else:
+        print("kitap bulunamadı!")
