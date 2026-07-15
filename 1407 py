@@ -1,0 +1,93 @@
+# import random
+
+# r = random.randint(1, 10)
+# print(r)
+
+import pandas as pd 
+
+print(pd.__version__)
+
+seri = pd.Series([1, 2, 4, 6])
+print(seri)
+
+puanlarVeIsımler = pd.Series([50, 60], index=["Ayşe","Farma"])
+print(puanlarVeIsımler)
+
+dictc = {
+   "Ayşe": 60,
+   "Fatma": 70,
+   "Kemal": 65
+}
+puanlar2 = pd.Series(dictc)
+print(puanlar2)
+
+print(puanlar2["Kemal"])
+print(puanlar2.get("Kemal2", None))
+
+ortalama = puanlar2.mean()
+print(ortalama)
+
+print(puanlar2.max(), "-", puanlar2.min())
+
+puan60ustu = puanlar2[puanlar2>60]
+print(puan60ustu)
+
+dersnotları = {"türkçe": 65, "matematik": 75, "tarih": 60, "fizik": 70}
+
+notlarsr = pd.Series(dersnotları)
+print("70 altındaki derslerim: ", notlarsr[notlarsr < 70])
+
+# DATAFRAME
+veri = {
+    "isimler": ["hasan", "hilal","mete", "barış", "selay",
+                "büşra", "kardealen", "elif","ırmak", "özkan"],
+    "fiziknotlar": [50, 60, 70, 80, 60, 50, 70, 60, 68, 59],
+    "kimyanotlar": [55, 67, 77, 80, 60, 50, 70, 60, 68, 59]
+}
+
+notlarDF = pd.DataFrame(veri)
+
+print(notlarDF)
+
+print(notlarDF.head(3))
+print(notlarDF.tail(3))
+
+print(notlarDF.shape)
+print(notlarDF.columns)
+print(notlarDF.info())
+
+print(notlarDF.describe())
+
+fizik80ustu = notlarDF["fiziknotlar"] > 80
+f80ustunotlar = notlarDF[fizik80ustu]
+print(f80ustunotlar)
+
+notlarDF["ortalamanot"] = (notlarDF["fiziknotlar"] + 
+notlarDF["kimyanotlar"]) / 2
+
+print(notlarDF)
+
+# csv işlemleri
+print("\n CSV DOSYASI \n")
+
+ogrencinotlariCSV = pd.read_csv("ogrenci_notlari.csv", encoding="windows-1254")
+print(ogrencinotlariCSV)
+print(ogrencinotlariCSV.info())
+
+print(ogrencinotlariCSV.describe())
+
+ogrencinotlariCSV["notortalamasi"] = ogrencinotlariCSV[["matematik", "fizik", "kimya"]].mean(axis=1)
+
+print(ogrencinotlariCSV)
+ogrencinotlariCSV["durum"] = ogrencinotlariCSV["notortalamasi"].apply(lambda x: "geçti" if x > 70 else "kaldı")
+
+print(ogrencinotlariCSV)
+
+print(ogrencinotlariCSV.loc[ogrencinotlariCSV["notortalamasi"].idxmax(), "isim"])
+
+print(ogrencinotlariCSV["matematik"].mean())
+
+print(ogrencinotlariCSV.sort_values("notortalamasi", ascending=False))
+
+print(ogrencinotlariCSV["durum"].value_counts())
+

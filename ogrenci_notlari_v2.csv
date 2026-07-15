@@ -1,0 +1,11 @@
+ogrenci_no,isim,sinif,matematik,fizik,kimya,devamsizlik,notortalamasi,durum
+101,Ahmet Yılmaz,10A,85.0,78.0,90,2,84.33333333333333,geçti
+102,Ayse Kaya,10A,92.0,,88,0,90.0,geçti
+103,Mehmet Demir,10B,45.0,60.0,55,8,53.333333333333336,kaldı
+104,Zeynep Sahin,10B,78.0,82.0,79,1,79.66666666666667,geçti
+105,Can Ozturk,10A,,70.0,65,3,67.5,kaldı
+106,Elif Aydin,10B,95.0,91.0,93,0,93.0,geçti
+107,Burak Celik,10A,60.0,55.0,200,5,105.0,geçti
+108,Selin Arslan,10B,88.0,84.0,90,0,87.33333333333333,geçti
+109,Ahmet Yilmaz,10A,85.0,78.0,90,2,84.33333333333333,geçti
+110,Deniz Yildiz,10B,72.0,68.0,71,4,70.33333333333333,geçti
